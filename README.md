@@ -6,4 +6,4 @@ You can download the executable *.jar* file from [here](https://github.com/Medai
 
 # How to use
 
-Command sintax: **QSD**; where **Q** is the next status, **S** is the new symbol to insert and **D** is the direction to move (**r** for right or **l** for left).
+Command sintax: **QSD**; where **Q** is the next status, **S** is the new symbol to insert and **D** is the direction to move (**r** for right or **l** for left). It's possible to insert comments in every command cell writing something near the instruction, the machine will ignore the text.
