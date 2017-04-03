@@ -53,6 +53,8 @@ public class Cell extends JTextField {
 			public void focusLost(FocusEvent e) {
 				Cell.this.selectAll();
 				Cell.this.COMMAND = Cell.this.getCommand();
+				Cell.this.setCaretPosition(0);
+				Cell.this.updateUI();
 		    }
 
 		});
