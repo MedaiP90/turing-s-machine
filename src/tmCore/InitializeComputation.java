@@ -1,6 +1,5 @@
 package tmCore;
 
-import java.awt.Color;
 import java.util.Vector;
 
 import exceptions.WrongCommandException;
@@ -52,7 +51,7 @@ public class InitializeComputation {
 		TmMainUi.updateExec(TmMainUi.getExePanel());
 		
 		TmMainUi.bg = TmMainUi.strip.STRIP_CELL.getBackground();
-		TmMainUi.strip.STRIP_CELL.setBackground(Color.CYAN);
+		TmMainUi.strip.STRIP_CELL.setBackground(TmMainUi.color);
 	}
 	
 	// start the algorithm

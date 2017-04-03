@@ -46,7 +46,7 @@ public class Computation {
 							+ ") in the strip";
 					i = (int) Double.parseDouble(sym) + 1;
 				}
-				sts.elementAt(this.n).CELL.elementAt(i).setBackground(Color.CYAN);
+				sts.elementAt(this.n).CELL.elementAt(i).setBackground(TmMainUi.color);
 				sts.elementAt(this.n).CELL.elementAt(i).updateUI();
 				TmMainUi.getProgPanel().scrollRectToVisible(sts.elementAt(this.n).
 						CELL.elementAt(i).getBounds());
@@ -86,7 +86,7 @@ public class Computation {
 						} 
 						sc = sc.stripNext();
 					}
-					sc.STRIP_CELL.setBackground(Color.CYAN);
+					sc.STRIP_CELL.setBackground(TmMainUi.color);
 					TmMainUi.getExePanel().scrollRectToVisible(sc.STRIP_CELL.getBounds());
 					TmMainUi.getExePanel().updateUI();
 					old = this.n;
