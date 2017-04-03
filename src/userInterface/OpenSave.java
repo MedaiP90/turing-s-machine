@@ -129,6 +129,8 @@ public class OpenSave {
             			line = br.readLine();
             			if(!line.equals("-")) {
             				TmMainUi.states[i][j].setText(line);
+            				TmMainUi.states[i][j].setCaretPosition(0);
+            				TmMainUi.states[i][j].updateUI();
             			}
             		}
             	}

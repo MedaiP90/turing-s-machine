@@ -36,6 +36,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JSeparator;
 
 public class TmMainUi extends JFrame {
@@ -73,6 +74,9 @@ public class TmMainUi extends JFrame {
 	private static String path = home + sep + "tm" + sep + "settings.tms";
 	
 	public static int delay = 18;
+	public static boolean style = false;
+	public static String colo = "BLUE";
+	public static Color color = Color.CYAN;
 
 	/**
 	 * Launch the application.
@@ -85,14 +89,42 @@ public class TmMainUi extends JFrame {
 				BufferedReader br = new BufferedReader(new FileReader(path));
 				String line = br.readLine();
 				delay = (int) Double.parseDouble(line);
+				line = br.readLine();
+				if(line.equals("true")) {
+					style = true;
+				} else {
+					style = false;
+				}
+				line = br.readLine();
+				colo = line;
+				if(colo.equals("BLUE")) {
+					color = Color.BLUE;
+				} else if(colo.equals("YELLOW")) {
+					color = Color.YELLOW;
+				} else if(colo.equals("RED")) {
+					color = Color.RED;
+				} else if(colo.equals("GREEN")) {
+					color = Color.GREEN;
+				}
 				br.close();
 			} catch (Exception e) {
 				delay = 18;
+				style = false;
+				color = Color.CYAN;
+				colo = "BLUE";
 				JOptionPane.showMessageDialog(null,
-						"No setting found, delay set to 18.\nOpen 'File > Settings' "
-						+ "to set preferred delay\n" + e.getMessage(),
+						"No preference found.\nOpen 'File > Preferences' "
+						+ "to change customize settings\n" + e.getMessage(),
 					    "Warning",
 					    JOptionPane.WARNING_MESSAGE);
+				Settings.SavePreferences(delay, style, colo);
+			}
+			if(style) {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch(Exception ex) {
+					
+				}
 			}
 			TmMainUi frame = new TmMainUi();
 			frame.setVisible(true);
@@ -175,7 +207,7 @@ public class TmMainUi extends JFrame {
 		JSeparator separator = new JSeparator();
 		mnFile.add(separator);
 		
-		JMenuItem mntmSettings = new JMenuItem("Settings");
+		JMenuItem mntmSettings = new JMenuItem("Preferences");
 		mnFile.add(mntmSettings);
 		
 		mntmSettings.addActionListener(new ActionListener() {
